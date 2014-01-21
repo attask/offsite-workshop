@@ -1,0 +1,27 @@
+<div class="approval-step">
+	<h3 class="clearfix">
+		<span>{{step.name}}</span>
+		<a href="javascript://" class="remove-step-icon"></a>
+	</h3>
+	<div class="fields-container">
+		<div class="field">
+			<strong>{{ 'approvalstepname' | i18n }}:</strong>
+			<input type="text" ng-model="step.name">
+		</div>
+
+		<div class="field">
+			<strong>{{ 'approvaltype' | i18n }}:</strong>
+			<span dropdown options="{}" prompt="{{ 'action.selectfromlist.abbr' | i18n }}" dataset="type.value as type.label for type in $parent.ctrl.types" ng-model="ctrl.selectedType"></span>
+		</div>
+		<div class="field">
+			<strong class="">{{ 'approver.plural' | i18n }}:</strong>
+			<div class="user-box approver-box ">
+				<div class="type-ahead-box">
+					<div ng-if="ctrl.selectedType === 'USER'" typeahead oracle="USER" ng-model="ctrl.stepApprovers.USER" multiple="true" style="width:210px"></div>
+					<div ng-if="ctrl.selectedType === 'TEAMOB'" typeahead oracle="TEAMOB" ng-model="ctrl.stepApprovers.TEAMOB" style="width:210px"></div>
+					<div ng-if="ctrl.selectedType === 'ROLE'" typeahead oracle="ROLE" ng-model="ctrl.stepApprovers.ROLE" style="width:210px"></div>
+				</div>
+			</div>
+		</div>
+	</div><!-- fieldscontainer -->
+</div>

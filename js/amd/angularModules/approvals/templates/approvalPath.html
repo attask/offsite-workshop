@@ -1,0 +1,15 @@
+<div class="approval-path">
+	<h2 class="clearfix">
+		{{ 'approvalpath.targetstatus.label' | i18n }}
+		<span dropdown options="{}" prompt="{{ 'customenum.status.action.selectfromlist' | i18n }}" dataset="status.value as status.label for status in $parent.ctrl.statuses" ng-model="path.targetStatus"></span>
+		<a href="javascript://" class="remove-path-icon"></a>
+	</h2>
+	<div class="start-message " ng-if="!path.targetStatus">
+		{{ 'approvalpath.startmessage' | i18n }}
+	</div>
+	<div class="steps-container" ng-if="path.targetStatus">
+		<div ng-repeat="step in path.approvalSteps">
+			<div approval-step step="step"></div>
+		</div>
+	</div>
+</div>

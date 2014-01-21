@@ -1,0 +1,24 @@
+<form class="editing">
+	<fieldset>
+		<section>
+			<ul>
+				<li name="approvals" class="clearfix optional">
+					<label></label>
+					<div class="edit">
+						<div class="tile-loader" id="content-approval-edit">
+							<div id="content-approval-paths">
+								<div ng-repeat="path in ctrl.approvalProcess.approvalPaths">
+									<div approval-path path="path"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+	</fieldset>
+	<menu>
+		<button class="submit primary" ng-click="ctrl.save()">{{ ctrl.saveState }}</button>
+		<button class="text cancel-button">{{ 'action.cancel' | i18n }}</button>
+	</menu>
+</form>

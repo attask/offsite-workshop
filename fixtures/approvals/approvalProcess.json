@@ -1,0 +1,45 @@
+{
+	"ID": "ARVPRC001",
+	"name": "Private Approval Process: My Project",
+	"objCode": "ARVPRC",
+	"approvalPaths": [
+		{
+			"ID": "ARVPTH001",
+			"objCode": "ARVPTH",
+			"approvalProcessID": "ARVPRC001",
+			"durationMinutes": 480,
+			"durationUnit": "D",
+			"rejectedStatus": "$$PREV",
+			"shouldCreateIssue": false,
+			"targetStatus": "CUR",
+			"approvalSteps": [
+				{
+					"ID": "ARVSTP001",
+					"name": "One",
+					"objCode": "ARVSTP",
+					"approvalPathID": "ARVPTH001",
+					"approvalType": "RB",
+					"sequenceNumber": 0,
+					"stepApprovers": [
+						{
+							"ID": "SPAPVR001",
+							"objCode": "SPAPVR",
+							"approvalStepID": "ARVSTP001",
+							"roleID": "ROLE001",
+							"teamID": null,
+							"userID": null,
+							"wildCard": null,
+							"user": null,
+							"team": null,
+							"role": {
+								"ID": "ROLE001",
+								"name": "Engineer",
+								"objCode": "ROLE"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
