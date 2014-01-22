@@ -84,7 +84,7 @@ define(['angular', 'angularModules/approvals/app'], function(angular){
 
 			beforeEach(function(){
 				pathElement = processElement.find('*[approval-path]');
-				expect(pathElement).toBeDefined();
+				expect(pathElement).toBePresent();
 
 				pathScope = pathElement.isolateScope();
 				expect(pathScope).toBeDefined();

@@ -108,7 +108,7 @@ define([
 				this.save = function(){
 					var aprvProc = angular.copy(this.approvalProcess),
 						proj = {
-						ID: $scope.projectId,
+						ID: $scope.projectId,//Add projectID to the scope at this time
 						objCode: ObjCodes.Project,
 						assign: true,
 						approvalProcess: aprvProc
@@ -136,13 +136,13 @@ define([
 
 					this.saveState = getMessage('saving');
 
-					//EWWW SO UGRY!! WRY YOU USE SPRING CLIENT? BECUASE STREAM API DOESN'T LET US EDIT PRIVATE APPROVAL PROCESS... GAH!!!
+					//EWWW SO UGRY!! WRY YOU USE SPRING CLIENT? BECAUSE STREAM API DOESN'T LET US EDIT PRIVATE APPROVAL PROCESS... GAH!!!
 					$http.post('/approval/save', 'form=' + encodeURIComponent(JSON.stringify(proj)), {
 						headers: {
 							sessionID: ($cookies.attask || '').split('#')[0],
 							'Content-Type': 'application/x-www-form-urlencoded'
 						}
-					})
+					})//Just copy the post first, then do the promise resolution in another step
 						.then(function(){
 							that.saveState = getMessage('saved');
 
