@@ -16,6 +16,7 @@ define(['angular', 'angularModules/approvals/app'], function(angular){
 			$httpBackend.whenGET(ARVPRC_REGEX).respond(200, {data:baseProcess});//NOTE THAT THIS IS WRAPPED IN AN OBJECT LITERAL
 			$httpBackend.whenGET(CSTEM_REGEX).respond(200, {data:customStatuses});
 
+			//NOTE This needs to be extracted into a common testing lib
 			dropDown = jasmine.createSpyObj('dropDown', ['addEvent', 'clearItems', 'setValue', 'set', 'get', 'getPickList', 'setText']);
 			typeAhead = jasmine.createSpyObj('typeAhead', ['getOracle', 'addEvent', 'set', 'setValue', 'reset']);
 			oracle = jasmine.createSpyObj('oracle', ['set']);
