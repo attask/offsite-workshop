@@ -13,7 +13,7 @@ define(['angular', 'angularModules/approvals/app'], function(angular){
 
 			$httpBackend = _$httpBackend_;
 
-			$httpBackend.whenGET(ARVPRC_REGEX).respond(200, {data:baseProcess});
+			$httpBackend.whenGET(ARVPRC_REGEX).respond(200, {data:baseProcess});//NOTE THAT THIS IS WRAPPED IN AN OBJECT LITERAL
 			$httpBackend.whenGET(CSTEM_REGEX).respond(200, {data:customStatuses});
 
 			dropDown = jasmine.createSpyObj('dropDown', ['addEvent', 'clearItems', 'setValue', 'set', 'get', 'getPickList', 'setText']);
@@ -42,10 +42,10 @@ define(['angular', 'angularModules/approvals/app'], function(angular){
 			processElement = $compile(processElement)(processScope);
 			processScope = processElement.isolateScope();
 
-			processScope.$digest();
+			//processScope.$digest(); Don't think I need these digests
 			$httpBackend.flush();
 
-			processScope.$digest();
+			//processScope.$digest(); Don't think I need these digests
 		}));
 
 		//flush the backend
