@@ -34,6 +34,11 @@ define(['angular', 'angularModules/approvals/app'], function(angular){
 
 			dropDown.getPickList.andReturn(jasmine.createSpyObj('pickList', ['clearItems']));
 			typeAhead.getOracle.andReturn(oracle);
+			dropDown.addEvent.andCallFake(function(event, callback){
+				if(event === 'change'){
+					dropDown.changeEventCallback = callback;
+				}
+			});
 		}));
 
 		beforeEach(inject(function($rootScope, $compile){
@@ -118,6 +123,21 @@ define(['angular', 'angularModules/approvals/app'], function(angular){
 				pathScope.$digest();
 
 				expect(pathElement.find('.steps-container').length).toBe(0);
+			});
+
+			it('should use the dropdown', function(){
+				expect(pathElement.find('.steps-container')).toBePresent();
+
+				path.targetStatus = null;
+				pathScope.$digest();
+
+				expect(pathElement.find('.steps-container')).not.toBePresent();
+
+				dropDown.get.andReturn('CUR');
+				dropDown.changeEventCallback();
+				pathScope.$digest();
+
+				expect(pathElement.find('.steps-container')).toBePresent();
 			});
 
 			describe('Approval Steps', function(){
